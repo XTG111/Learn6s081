@@ -1,0 +1,3 @@
+[submodule "xv6-labs-2020-copymit"]
+	path = xv6-labs-2020-copymit
+	url = git://g.csail.mit.edu/xv6-labs-2020
