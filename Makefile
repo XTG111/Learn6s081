@@ -154,6 +154,7 @@ UPROGS=\
 	$U/_litcat\
 	$U/_pingpong\
 	$U/_primes\
+	$U/_find\
 
 
 ifeq ($(LAB),syscall)
