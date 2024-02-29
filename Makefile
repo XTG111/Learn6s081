@@ -148,9 +148,11 @@ UPROGS=\
 	$U/_grind\
 	$U/_wc\
 	$U/_zombie\
-	$U/_copy\
 	$U/_forkpid\
 	$U/_sleep\
+	$U/_exectest\
+	$U/_litcat\
+	$U/_pingpong\
 
 
 ifeq ($(LAB),syscall)
