@@ -153,6 +153,7 @@ UPROGS=\
 	$U/_exectest\
 	$U/_litcat\
 	$U/_pingpong\
+	$U/_primes\
 
 
 ifeq ($(LAB),syscall)
