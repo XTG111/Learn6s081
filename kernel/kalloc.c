@@ -39,6 +39,24 @@ freerange(void *pa_start, void *pa_end)
     kfree(p);
 }
 
+//get the free memory
+//calculate the number of kmem's freelist
+void
+getfree(uint64 *res)
+{
+	*res = 0;
+	struct run *cur = kmem.freelist;
+	//lock
+	acquire(&kmem.lock);
+	while(cur)
+	{
+		//Base: PGSIZE
+		*res += PGSIZE;
+		cur = cur->next;
+	}
+	release(&kmem.lock);
+}
+
 // Free the page of physical memory pointed at by v,
 // which normally should have been returned by a
 // call to kalloc().  (The exception is when

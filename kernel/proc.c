@@ -44,6 +44,20 @@ procinit(void)
   kvminithart();
 }
 
+//get the used-proc num
+void
+getprocnum(uint64* num)
+{
+	*num = 0;
+	struct proc* p;
+	for(p = proc; p < &proc[NPROC]; p++)
+	{
+		acquire(&pid_lock);
+		if(p->state != UNUSED) (*num)++;
+  		release(&pid_lock);
+	}
+}
+
 // Must be called with interrupts disabled,
 // to prevent race with process being moved
 // to a different CPU.
@@ -295,6 +309,9 @@ fork(void)
 
   np->state = RUNNABLE;
 
+  //copy trace_mask from p to np
+  np->trace_mask = p->trace_mask;
+  
   release(&np->lock);
 
   return pid;
